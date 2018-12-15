@@ -1,14 +1,22 @@
 import requests
-#Requests is a Python HTTP library, released under the Apache2 License.
+# Requests is a Python HTTP library, released under the Apache2 License.
 # The goal of the project is to make HTTP requests simpler and more human-friendly.
+
+BASE_URL = "http://saral.navgurukul.org/api"
+
 def request(url):
+        '''
+        takes a string input which is the url being fetched
+        returns the json request after making a get request from the api
+        '''
         resp = requests.get(url)
         return resp.json()
 
-
-#Now, we have a Response object called resp.
-#We can get all the information we need from this object.
-#In data1 response is converted into JSON format.
+courses = [] # Global Variable to store all the courses details
+current_course_id = 0
+course_exercises = [] # Global Variable to store the exercise for a particular course
+current_exercise_slug = ""
+course_content = '''Course Content Here'''
 
 course_json = request("http://saral.navgurukul.org/api/courses")
 
