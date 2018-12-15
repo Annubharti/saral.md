@@ -2,7 +2,7 @@ import requests
 # Requests is a Python HTTP library, released under the Apache2 License.
 # The goal of the project is to make HTTP requests simpler and more human-friendly.
 
-BASE_URL = "http://saral.navgurukul.org/api"
+BASE_URL = "http://saral.navgurukul.org/api/courses" # GLobal Varibale to store api through which gives courses
 
 def request(url):
         '''
@@ -18,7 +18,7 @@ course_exercises = [] # Global Variable to store the exercise for a particular c
 current_exercise_slug = ""
 course_content = '''Course Content Here'''
 
-course_json = request("http://saral.navgurukul.org/api/courses")
+course_json = request(BASE_URL)
 
 #we are calling request function by giving paramater of courses url.
 id_list= []
@@ -45,7 +45,7 @@ choose_course = int(input("Choose the Course number which you want to learn."))
 chosen_course = id_list[choose_course]
 # jb choose_course id_list ke index number ke barabr ho  to a
 
-exercise_json = request("http://saral.navgurukul.org/api/courses/"+str(chosen_course)+"/exercises")
+exercise_json = request(BASE_URL +str(chosen_course)+"/exercises")
 
 # Throws error if the retu3rned data is an empty list
 
